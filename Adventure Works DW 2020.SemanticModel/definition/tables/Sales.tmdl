@@ -205,7 +205,8 @@ table Sales
 		formatString: 0.00%;-0.00%;0.00%
 		lineageTag: e5c8d1f6-7a2b-8d0e-3f6c-b9a1e2d45678
 
-	measure sales_ytd = TOTALYTD([Total Sales], 'Date'[Date])
+	/// Year-to-date sales based on the fiscal calendar. Use for cumulative performance tracking.
+	measure 'Sales YTD' = TOTALYTD([Total Sales], 'Date'[Date])
 		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
 		lineageTag: f6d9e2a7-8b3c-9e1f-4a7d-c0b2f3e56789
 
@@ -216,6 +217,11 @@ table Sales
 	measure 'Sum of Transactions' = COUNTROWS(Sales)
 		formatString: #,0
 		lineageTag: b8f1a4c9-0d5e-1a3b-6c9f-e2d4b5a78901
+
+	/// Average revenue per order. Calculated as total sales divided by distinct order count.
+	measure 'Avg Order Value' = DIVIDE([Total Sales], DISTINCTCOUNT(Sales[SalesOrderLineKey]))
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: d0b3c6e1-2f7a-3c5d-8e1b-a4f6d7c90123
 
 	measure 'Sales per Active Day' =
 			VAR _TotalSales =
