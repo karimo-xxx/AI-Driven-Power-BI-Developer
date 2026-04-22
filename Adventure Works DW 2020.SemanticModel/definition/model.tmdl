@@ -10,7 +10,7 @@ annotation __PBI_TimeIntelligenceEnabled = 0
 
 annotation PBI_QueryOrder = ["SqlServerInstance","SqlServerDatabase","Culture","Customer","Date","Product","Reseller","Sales","Sales Order","Sales Territory","Currency Rate","Currency","Sales Reason","Sales Reason Bridge"]
 
-annotation PBI_ProTooling = ["DaxQueryView_Desktop","DevMode"]
+annotation PBI_ProTooling = ["DaxQueryView_Desktop","DevMode","TMDL-Extension"]
 
 ref table Customer
 ref table Date
