@@ -182,6 +182,21 @@ table Sales
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Total revenue across all sales channels (Internet and Reseller). Primary top-line metric used in most reports.
+	measure 'Total Sales' = SUM(Sales[Sales Amount])
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: a1e4f7b2-3c8d-4f6a-9b2e-d5c7a8f01234
+
+	/// Aggregated cost of goods sold across all product lines and channels.
+	measure 'Total Cost' = SUM(Sales[Total Product Cost])
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: b2f5a8c3-4d9e-5a7b-0c3f-e6d8b9a12345
+
+	/// Revenue minus cost of goods sold. Key profitability indicator before operating expenses.
+	measure 'Gross Profit' = [Total Sales] - [Total Cost]
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: c3a6b9d4-5e0f-6b8c-1d4a-f7e9c0b23456
+
 	partition Sales-1c496a38-f0f4-4d25-b987-657177c38553 = m
 		mode: import
 		source =
