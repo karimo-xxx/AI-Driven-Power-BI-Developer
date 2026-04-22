@@ -1,0 +1,28 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"extensions": {
+		"recommendations": [
+			"analysis-services.tmdl",
+			"analysis-services.powerbi-modeling-mcp",
+			"mhutchie.git-graph"
+		]
+	},
+	"settings": {
+		"editor.wordWrap": "off",
+		"editor.tabSize": 4,
+		"editor.insertSpaces": false,
+		"editor.detectIndentation": false,
+		"editor.renderWhitespace": "boundary",
+		"files.trimTrailingWhitespace": false,
+		"files.associations": {
+			"*.tmdl": "tmdl"
+		},
+		"search.exclude": {
+			"**/StaticResources/**": true
+		}
+	}
+}
