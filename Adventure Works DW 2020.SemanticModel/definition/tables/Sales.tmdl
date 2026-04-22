@@ -197,6 +197,54 @@ table Sales
 		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
 		lineageTag: c3a6b9d4-5e0f-6b8c-1d4a-f7e9c0b23456
 
+	measure 'Order Qty' = SUM(Sales[Order Quantity])
+		formatString: #,0
+		lineageTag: d4b7c0e5-6f1a-7c9d-2e5b-a8f0d1c34567
+
+	measure 'Gross Profit Margin' = DIVIDE([Gross Profit], [Total Sales])
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: e5c8d1f6-7a2b-8d0e-3f6c-b9a1e2d45678
+
+	measure sales_ytd = TOTALYTD([Total Sales], 'Date'[Date])
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: f6d9e2a7-8b3c-9e1f-4a7d-c0b2f3e56789
+
+	measure Sales_MTD = TOTALMTD([Total Sales], 'Date'[Date])
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: a7e0f3b8-9c4d-0f2a-5b8e-d1c3a4f67890
+
+	measure 'Sum of Transactions' = COUNTROWS(Sales)
+		formatString: #,0
+		lineageTag: b8f1a4c9-0d5e-1a3b-6c9f-e2d4b5a78901
+
+	measure 'Sales per Active Day' =
+			VAR _TotalSales =
+			    CALCULATE(
+			        SUMX(
+			            Sales,
+			            Sales[Sales Amount]
+			        )
+			    )
+			VAR _ActiveDays =
+			    COUNTROWS(
+			        FILTER(
+			            VALUES('Date'[Date]),
+			            NOT(ISBLANK(
+			                CALCULATE(
+			                    SUM(Sales[Sales Amount])
+			                )
+			            ))
+			        )
+			    )
+			RETURN
+			    IF(
+			        _ActiveDays > 0,
+			        _TotalSales / _ActiveDays,
+			        BLANK()
+			    )
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: c9a2b5d0-1e6f-2b4c-7d0a-f3e5c6b89012
+
 	partition Sales-1c496a38-f0f4-4d25-b987-657177c38553 = m
 		mode: import
 		source =
