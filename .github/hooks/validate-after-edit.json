@@ -1,0 +1,11 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "type": "command",
+        "command": "echo '⚠️  Reminder: TMDL-Datei wurde geändert. Validierung gegen Conventions empfohlen.' && exit 0",
+        "timeout": 5
+      }
+    ]
+  }
+}
