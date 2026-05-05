@@ -5,9 +5,17 @@ description: Propose consistent renaming for measures that violate naming conven
 
 # Refactor Measure Naming
 
+## When to Use
+
+- User asks to "refactor", "rename", or "fix" measure names
+- User wants naming conventions applied across the model
+- User identifies specific measures that violate naming standards
+
+## Procedure
+
 When asked to refactor measure names, follow this workflow:
 
-1. **Scan** all measures in the Sales table TMDL file
+1. **Scan** all measures across all table TMDL files in `definition/tables/`
 2. **Compare** each name against the conventions in `.github/copilot-instructions.md`:
    - PascalCase with spaces (no underscores)
    - No abbreviations (spell out Quantity, Average, Count)

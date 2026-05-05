@@ -1,9 +1,9 @@
 {
   "hooks": {
-    "PostToolUse": [
+    "PreToolUse": [
       {
         "type": "command",
-        "command": "echo '⚠️  Reminder: TMDL-Datei wurde geändert. Validierung gegen Conventions empfohlen.' && exit 0",
+        "command": "pwsh -NoProfile -Command \"$input = $Input | ConvertFrom-Json; $protected = 'Sales_MTD|Order Qty|Avg Order Value|Sum of Transactions'; if ($input.toolName -match 'replace_string' -and $input.toolInput.filePath -like '*.tmdl' -and $input.toolInput.oldString -match $protected) { Write-Output '{\\\"hookSpecificOutput\\\": {\\\"hookEventName\\\": \\\"PreToolUse\\\", \\\"permissionDecision\\\": \\\"ask\\\", \\\"permissionDecisionReason\\\": \\\"This measure is an intentional inconsistency for workshop demos. Are you sure you want to modify it?\\\"}}' }\"",
         "timeout": 5
       }
     ]

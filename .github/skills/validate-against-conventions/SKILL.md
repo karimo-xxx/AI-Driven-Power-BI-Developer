@@ -5,6 +5,14 @@ description: Validate selected TMDL code against the project conventions in copi
 
 # Validate Against Conventions
 
+## When to Use
+
+- User asks to "validate", "check conventions", or "verify compliance"
+- User pastes or selects TMDL code and wants it reviewed
+- User asks if a measure/table/column follows project standards
+
+## Procedure
+
 When asked to validate TMDL code, check it against `.github/copilot-instructions.md`:
 
 1. **Naming** — Does the measure/table/column follow PascalCase with spaces?

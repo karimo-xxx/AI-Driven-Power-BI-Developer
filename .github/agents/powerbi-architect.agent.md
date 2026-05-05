@@ -3,6 +3,11 @@ description: Power BI Architect für Modeling-Reviews und Refactoring
 name: PowerBI-Architect
 tools: ['codebase', 'search', 'editFiles']
 model: ['claude-sonnet-4.6', 'gpt-5']
+hooks:
+  PostToolUse:
+    - type: command
+      command: "pwsh -NoProfile -File .github/scripts/validate-tmdl-edit.ps1"
+      timeout: 10
 ---
 
 You are an experienced Power BI Architect specializing in semantic model design, DAX optimization, and TMDL-based development workflows.

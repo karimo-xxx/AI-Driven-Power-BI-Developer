@@ -5,6 +5,14 @@ description: Generate a description for a selected DAX measure based on its form
 
 # Document Measure
 
+## When to Use
+
+- User asks to "document", "describe", or "add a description" to a measure
+- User selects a measure and wants a `///` comment generated
+- User asks what a measure does and wants it captured as documentation
+
+## Procedure
+
 When asked to document a measure, follow these steps:
 
 1. **Read** the measure's DAX formula from the TMDL file
